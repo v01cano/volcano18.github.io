@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入alert(11)可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入：即可。  2，medium级别,直接输入alert(11)发现无法成功弹框，对al">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/10/13/bwapp玩法总结之一/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入alert(11)可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入：即可。  2，medium级别,直接输入alert(11)发现无法成功弹框，对al">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c4700786b.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/13/index.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9d29ae1975.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c4700786b.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9d4640f6de.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c7f0d5cef.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c8cfbe1f4.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9cb63ab656.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9d4640f6de.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9fdb56438f.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9fef87685d.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9ff85ae26f.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba05ba80b80.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba0697b6127.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba078482ba1.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba097db5cb3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba0df693a40.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/07/5bba0ed348571.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbaf42d7c907.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb04b838fa9.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb059405d5b.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb3e25b0b13.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb3ee06a013.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb3f66dbbb3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb40f45e7aa.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb41d5ba246.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb45124776d.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb48ca191fb.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb4a841feb1.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb059405d5b.png">
+<meta property="og:updated_time" content="2018-10-09T08:13:38.560Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入alert(11)可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入：即可。  2，medium级别,直接输入alert(11)发现无法成功弹框，对al">
+<meta name="twitter:image" content="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-bwapp玩法总结之一" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/13/bwapp玩法总结之一/" class="article-date">
+  <time datetime="2018-10-12T16:24:09.015Z" itemprop="datePublished">2018-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="bwapp玩法总结之一"><a href="#bwapp玩法总结之一" class="headerlink" title="bwapp玩法总结之一"></a>bwapp玩法总结之一</h1><h2 id="html注入"><a href="#html注入" class="headerlink" title="html注入"></a>html注入</h2><h3 id="html-injection-Reflected-GET-类型"><a href="#html-injection-Reflected-GET-类型" class="headerlink" title="html injection-Reflected(GET)类型"></a>html injection-Reflected(GET)类型</h3><p>1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png" alt="图片1"></p>
+<p>输入<script>alert(11)</script>可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9c4700786b.png" alt=""></p>
+<p>可以以读取跟目录下的图片：</p>
+<p>在输入框中输入：<img src="../index.png">即可。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9d29ae1975.png" alt="volcano18"></p>
+<p>2，medium级别,直接输入<script>alert(11)</script>发现无法成功弹框，对<script>alert(11)</script>进行url编码，编码后的结果为%3C%73%63%72%69%70%74%3E%61%6C%65%72%74%28%31%31%29%3C%2F%73%63%72%69%70%74%3E，使用该脚本进行注入，发现注入成功，即可以成功弹框。编码推荐网址为（<a href="http://www.toolsxx.com/code/xss.html）" target="_blank" rel="noopener">http://www.toolsxx.com/code/xss.html）</a></p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9c4700786b.png" alt="图片2"></p>
+<p>3，high级别，发现无论如何都无法成功进行弹框，即也无法进行html注入，那原因是什么呢？</p>
+<p>让我们一起来看看源码吧。</p>
+<p>在不同等级下分别对应不同的函数：low-no_check,  medium-xss_check_1, high-xss_check_3。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9d4640f6de.png" alt="volcano18"></p>
+<p>4，在low级别下源码为：</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9c7f0d5cef.png" alt="图片3"></p>
+<p>没有进行任何过滤，输入什么，立刻输出什么。</p>
+<p>5，在medium级别下源码为：</p>
+<p>​            <img src="https://i.loli.net/2018/10/07/5bb9c8cfbe1f4.png" alt="图片4"></p>
+<p>在medium级别，由源码可知，该级别下将用户输入的“&gt;”和”&lt;”替换为了他们所对应的html实体&amp;gt和&amp;lt，但是最后又进行了一次url解码，所以绕过方法为：先对&gt;和&lt;进行url编码，即可绕过。编码结果为：%3Cscript%3Ealert(11)%3C/script%3E</p>
+<p>6，在high级别下源码为：</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9cb63ab656.png" alt="图片5"></p>
+<p>由源码可知，在high级别下使用了php中防止注入的终极函数htmlentitiles(),在此处没有注入成功，虽然尝试了很久，但是依旧没有成功。</p>
+<h3 id="html-injection-Reflected-post-类型"><a href="#html-injection-Reflected-post-类型" class="headerlink" title="html injection-Reflected(post)类型"></a>html injection-Reflected(post)类型</h3><p>该类型下所调用的函数与html injection-Reflected(get)类型完全一样。只是将表单的提交方式由get变为了post。</p>
+<p>在不同等级下分别对应不同的函数：low-no_check,  medium-xss_check_1, high-xss_check_3。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9d4640f6de.png" alt="volcano18"></p>
+<h3 id="html-injection-Reflected-url-类型"><a href="#html-injection-Reflected-url-类型" class="headerlink" title="html injection-Reflected(url)类型"></a>html injection-Reflected(url)类型</h3><h3 id="1，在low级别下：url-http-192-168-80-141-bWAPP-htmli-current-url-php-后面加上什么就返回什么，"><a href="#1，在low级别下：url-http-192-168-80-141-bWAPP-htmli-current-url-php-后面加上什么就返回什么，" class="headerlink" title="1，在low级别下：url: http://192.168.80.141/bWAPP/htmli_current_url.php? 后面加上什么就返回什么，"></a>1，在low级别下：url: <a href="http://192.168.80.141/bWAPP/htmli_current_url.php" target="_blank" rel="noopener">http://192.168.80.141/bWAPP/htmli_current_url.php</a>? 后面加上什么就返回什么，</h3><p><img src="https://i.loli.net/2018/10/07/5bb9fdb56438f.png" alt="volcano18"></p>
+<p>尝试输入<script>alert(11)</script>进行弹框，发现弹框失败，从而输入的脚本进行了url编码，个人立即猜测是因为在浏览器的输入框中输入的原因，所以立即使用burpsuite进行抓包，然后再在url后面加上?<script>alert(11)</script></p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9fef87685d.png" alt="1538916062909"></p>
+<p>再点击Forward发送该报文，弹窗成功，即脚本执行成功。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bb9ff85ae26f.png" alt="1538916200429"></p>
+<p>2，在medium级别下，由于火狐浏览器对url进行了编码，所以无法继续使用low级别下的方法进行弹框，但是脚本依旧可以成功执行，在ie浏览器中的url后面加上：?</p><h1>volcano18</h1>，发现该脚本成功执行，执行结果如图：<p></p>
+<p><img src="https://i.loli.net/2018/10/07/5bba05ba80b80.png" alt="volcano18"></p>
+<p>其实也是可以弹框的，只是ie浏览器和谷歌浏览器禁用了部分js脚本，所以导致弹框失败，在url后面加上?<script>alert(11)</script>执行结果如下：脚本可以成功执行，只是被ie浏览器阻止其运行。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bba0697b6127.png" alt="volcano18"></p>
+<p>3,在high别下，由于又使用了防止输入的终极函数htmlentitiles()，无法进行注入。</p>
+<p>查看html injection-Reflected(url)后端处理部分源码如下：low-0,    medium-1,   high-2,  </p>
+<p><img src="https://i.loli.net/2018/10/07/5bba078482ba1.png" alt="volcano18"></p>
+<p>在low和medium级别下，没有进行任何过滤，都是直接获取url然后将其直接输出，而high级别下使用了xss_check_3函数对host后面的部分进行了过滤处理，使得无法进行注入。</p>
+<p><img src="https://i.loli.net/2018/10/07/5bba097db5cb3.png" alt="1538918762260"></p>
+<h3 id="html-injection-stored-blog-类型"><a href="#html-injection-stored-blog-类型" class="headerlink" title="html injection-stored(blog)类型"></a>html injection-stored(blog)类型</h3><p>该类型为存储型的html注入，即所提交的脚本会重复执行。</p>
+<p>1，在low级别下，没有进行任何过滤，直接输入脚本<script>alert(‘volcano18’)</script>即可成功弹框，</p>
+<p><img src="https://i.loli.net/2018/10/07/5bba0df693a40.png" alt="volcano18"></p>
+<p>也可以使用脚本<script>alert(document.cookie)</script>读取用户的cookie</p>
+<p><img src="https://i.loli.net/2018/10/07/5bba0ed348571.png" alt="360截图17940614453528"></p>
+<p>也可以读取我事先放到根目录下的图片：使用脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;../index.png&quot;/&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/10/08/5bbaf42d7c907.png" alt="volcano18"></p>
+<p>等一些后期利用方面可以自己随便选取一个模块自己练手，本人在这里只针对这些模块的一些绕过方式和利用方式进行讲解。</p>
+<p>2，在medium级别下，试了很久没有成功执行脚本，最后无奈，只好查看源码了，查看源码发现，不论是medium级别还是high级别，都使用了xss_check_3函数进行了过滤，源码如下：</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb04b838fa9.png" alt="volcano18"></p>
+<p>对留言框的输入使用了xss_check_3函数进行过滤，xss_check_3函数源码如下：</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb059405d5b.png" alt="volcano18"></p>
+<p>然而在xss_check_3中使用了防止html注入的终极函数htmlspecialchars()，所以在html injection-stored(blog)类型中，不论是medium级别还是high级别均无法进行注入。</p>
+<h3 id="iFrame-Injection类型"><a href="#iFrame-Injection类型" class="headerlink" title="iFrame Injection类型"></a>iFrame Injection类型</h3><p>1,在low级别下，首先从url：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250</a> 观察到robots.txt文件，刚刚好被读取到界面上显示，于是查看源码发现，ParamUrl后面所包含的路径直接内嵌在iframe标签中：如图：</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb3e25b0b13.png" alt="volcano18"></p>
+<p>于是我进行了如下利用，读取根目录下的index.png图片，将url改为：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=192.168.174.128/../../index.png&amp;ParamWidth=250&amp;ParamHeight=250即可以成功读取根目录下的图片：" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=192.168.174.128/../../index.png&amp;ParamWidth=250&amp;ParamHeight=250即可以成功读取根目录下的图片：</a></p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb3ee06a013.png" alt="volcano18"></p>
+<p>可以也将url改为：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=https://www.baidu.com&amp;ParamWidth=250&amp;ParamHeight=250" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=https://www.baidu.com&amp;ParamWidth=250&amp;ParamHeight=250</a> 从而将百度网页内嵌在iframe框架中，</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb3f66dbbb3.png" alt="volcano18"></p>
+<p>也可以直接构造playload进行弹框：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=javascript:alert(11);&amp;ParamWidth=250&amp;ParamHeight=250，即将ParamUrl的值设置为javascript:alert(11)" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=javascript:alert(11);&amp;ParamWidth=250&amp;ParamHeight=250，即将ParamUrl的值设置为javascript:alert(11)</a>;</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb40f45e7aa.png" alt="volcano18"></p>
+<p>也可以这样构造playload将url设置为：192.168.174.128/bWAPP/iframei.php?ParamUrl=” onload=alert(11)&gt;//&amp;ParamWidth=250&amp;ParamHeight=250   即将<iframe>标签提前闭合。</iframe></p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb41d5ba246.png" alt="volcano18"></p>
+<p>2,在medium级别下，在参数ParamUrl试过了各种脚本，也玩了很久很久，发现无论如何，src总是等于robots.txt于是估计可能是ParamUrl参数无法改变，那么真的不能注入了吗？这时我便想起了该url中的另外两个参数，没想到真的在另外两个参数注入成功了，将ParamWidth参数值设置为” onload=alert(11)&gt;//即可成功注入。</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb45124776d.png" alt="volcano18"></p>
+<p>3,在high级别下，有没有成功进行注入，估计又是使用了防止html注入的终极函数htmlspecialchars(),于是查看源码：</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb48ca191fb.png" alt="volcano18"></p>
+<p>发现在medium级别时，使用的是xss_check_4()函数进行过滤，查看xss_check_4函数如下：</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb4a841feb1.png" alt="volcano18"></p>
+<p>使用了addslashes()函数进行过滤，该函数会在预定义字符之前添加反斜杠，会添加反斜杠预定义字符有：单引号（‘），双引号（“），反斜杠（\ )，NULL。使用该函数进行过滤采用上述方法完全可以进行绕过。</p>
+<p>在high级别下，使用的是xss_check_3()函数进行过滤</p>
+<p><img src="https://i.loli.net/2018/10/08/5bbb059405d5b.png" alt="volcano18"></p>
+<p>该函数中采用了防止xss注入的终极函数htmlspecialchars()，所以无法进行注入。</p>
+<p>在近一个月将会对bwapp进行详细的讲解，更多的文章将会在后续发出。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/13/bwapp玩法总结之一/" data-id="cjn682x2h000104tuefzax6w6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/13/bwapp不一样的玩法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/13/bwapp玩法总结之一/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/bwapp不一样的玩法/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/13/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
