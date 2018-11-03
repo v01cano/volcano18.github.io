@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-10-25T08:07:38.008Z</updated>
+  <updated>2018-11-03T12:25:07.710Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>整数规划算法</title>
+    <link href="http://yoursite.com/2018/11/03/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/11/03/整数规划算法/</id>
+    <published>2018-11-03T12:25:07.709Z</published>
+    <updated>2018-11-03T12:25:07.710Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="整数规划"><a href="#整数规划" class="headerlink" title="整数规划"></a>整数规划</h1><p>个人看法：其实在数学建模的前几个章节只不过学习一些基础数学和数学建模中思考方式的形成。</p><p>而这个章节就主要讲解了整数规划的一些简单介绍及其求解方法，并用实际的例子加以验证。</p><p>1，整数规划的定义：规划中的变量（部分或全部）限制为整数时，称为整数规划。若在线性规划模型中，变量限制为整数，则称为整数线性规划。目前所流行的求解整数规划的方法，往往只适用于整数线性规划。目前还没有一种方法能有效地求解一切整数规划。</p><p>2，个人对整数线性规划的简单理解：其实个人认为整数线性规划只不过是线性规划的一种，只不过求解整数线性规划的前提条件比求解线性规划的前提条件更加严格和苛刻罢了，因为其并不是简单的求得最优解即可，而是需要将变量限制在一定的整数范围内求解最优解的过程，整数规划最优解不能按照实数最优解简单取整而获得，而是需要对问题具有深入的思考并选取一定的方法去求得，常用的方法有一下五种：</p><ul><li>分枝定界法—可求纯或混合整数线性规划</li><li>割平面法—可求纯或混合整数线性规划。</li><li>隐枚举法—求解“0-1”整数规划。</li><li>匈牙利法—解决指派问题（“0-1”规划特殊情形）。</li><li>蒙特卡洛法—求解各种类型规划。</li></ul><p>3，分支定界法的简单介绍：</p><p>对有约束条件的最优化问题（其可行解为有限数）的所有可行解空间恰当地进行系统搜索，这就是分枝与定界内容。通常，把全部可行解空间反复地分割为越来越小的子集，称为分枝；并且对每个子集内的解集计算一个目标下界（对于最小值问题），这称为定界。在每次分枝后，凡是界限超出已知可行解集目标值的那些子集不再进一步分枝，这样，许多子集可不予考虑，这称剪枝。这就是分枝定界法的主要思路。</p><p><img src="https://i.loli.net/2018/11/03/5bdd8bb5a63c1.png" alt=""></p><p>利用分支定界法求解的过程就是：</p><p>3.1，第一步，忽略所有限制条件，直接解出x1和x2的值以及最优解z1的值，若x1和x2为整数，则直接就是最优解了，若不为整数则先对z1进行定界，初步确定z1的范围，为后续的剪枝做铺垫。再第二步，分支。</p><p>3.2，第二步，分支，分支的方法是：将第一步中得到的x1和x2中的有小数的变量进行取整，比如x1=3.5,则x1可以取整的值为3或者4，分别求解在x1=3和x1=4的条件下的最优解z1的值和x2的值，若z1的值不在第一步中确定的z1的值的范围内，则进行减枝，即将该x1,x2直接舍去，不再进行分支。若z1的值在第一步所确定的z的范围内，且求得的x1和x2都为整数，则该解即为最优解，若x1和x2不全为整数，则重复第一步和第二步。直到求得的x1和x2都为整数，并且z1在所限定的范围内。</p><p>附上上面题目的求解过程和答案：</p><p><img src="https://i.loli.net/2018/11/03/5bdd9295b57ae.png" alt="1541247609793"></p><p><img src="https://i.loli.net/2018/11/03/5bdd92e8ecc18.png" alt="2"></p><p>4，求解“0-1”整数规划</p><p>“0-1”整数规划只不过是比上面的条件更加严格了，它的变量xj仅仅可以取值0或者1。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;整数规划&quot;&gt;&lt;a href=&quot;#整数规划&quot; class=&quot;headerlink&quot; title=&quot;整数规划&quot;&gt;&lt;/a&gt;整数规划&lt;/h1&gt;&lt;p&gt;个人看法：其实在数学建模的前几个章节只不过学习一些基础数学和数学建模中思考方式的形成。&lt;/p&gt;
+&lt;p&gt;而这个章节就主要讲解了
+      
+    
+    </summary>
+    
+      <category term="数学建模" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1/"/>
+    
+    
+      <category term="整数规划算法" scheme="http://yoursite.com/tags/%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>bwapp玩法总结之二</title>
@@ -78,9 +104,9 @@
     <link href="http://yoursite.com/2018/10/20/web%E4%BA%94%E5%A4%A7%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7/"/>
     <id>http://yoursite.com/2018/10/20/web五大信息泄露收集工具/</id>
     <published>2018-10-20T13:20:19.691Z</published>
-    <updated>2018-10-20T13:21:11.436Z</updated>
+    <updated>2018-10-25T08:26:14.710Z</updated>
     
-    <content type="html"><![CDATA[<p>1，bbscan一款轻量级的web信息泄露批量扫描工具。扫描迅速，使用简单。</p><p>特性：</p><ul><li>小字典</li><li>可以自动扫描 Target/Mask 这样网络中所有的主机</li><li>误报率小</li></ul><p>首先下载吧，下载地址如下：<a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">https://github.com/lijiejie/BBScan</a></p><p>使用方法：下载以后先解压，解压以后可以就直接在解压目录下使用命令（python需要已经安装，并且需要使用python2)：</p><p>pip install -r requirements.txt</p><p>安装完成以后就可以直接扫描web应用程序了。</p><p>使用方法如下：对ip和端口为10.242.227.11:88的主机进行扫描</p><p>python BBScan.py –host <a href="http://10.242.227.11:88" target="_blank" rel="noopener">http://10.242.227.11:88</a></p><p><img src="https://i.loli.net/2018/10/20/5bcb23e14f11e.png" alt="3"></p><p>扫描结果如下：</p><p><img src="https://i.loli.net/2018/10/20/5bcb241a24f7a.png" alt="volcano18"></p><p>具体的使用方法也可以参考链接：</p><p><a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">https://github.com/lijiejie/BBScan</a></p><p><a href="https://www.secpulse.com/archives/40553.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/40553.html</a></p><p><a href="http://www.legendsec.org/1067.html" target="_blank" rel="noopener">http://www.legendsec.org/1067.html</a></p><p>[注]：分享一波本人在这里遇到的坑吧，因为我当前使用的是python3，然后bbscan需要使用python2进行运行，于是我便将python27也添加到了环境变量，为了让系统能够区分python2和python3我将python安装目录下的python.exe该成了python2.exe，所以以后在我控制台直接输入python运行的是python的3的版本，而需要使用python的2.7的版本时，需要输入python2，好了，python2的环境变量既然配置好了，那么接下来我就要安装bbscan所需要的一些库文件了，于是我输入命令</p><p>pip2 install -r requirements.txt（因为我安装的python2.7，在python2.7的scripts目录下面也有pip2.exe，所以我需要使用pip2 install -r requirements.txt,因为如果我输入pip install -r requirements.txt则默认调用的是python3中的pip。）</p><p>但是报错了，报错如下：</p><p>Fatal error in launcher: Unable to create process using ‘“‘</p><p>解决方法：运行命令python2 -m pip install –upgrade pip升级pip的版本，因为重装以后会根据更改后的python的执行文件来创建关联，问题这样就被解决了，如果还不行，那就重装pip吧，使用命令如下：</p><p>python2  -m pip install –upgrade –force-reinstall pip</p><p>第一步bbscan所需要的库安装完成之后就可以直接使用了。</p><p>再次注明：pip2.7 install -r requirements.txt需要在bbscan的安装目录下运行。</p><p><img src="https://i.loli.net/2018/10/20/5bcb28a115f3e.png" alt="3"></p><p>2，git信息泄露工具：githack</p><p>下载地址：<a href="https://github.com/lijiejie/GitHack" target="_blank" rel="noopener">https://github.com/lijiejie/GitHack</a>    </p><p>3，dirbrute</p><p>下载地址：<a href="https://github.com/Xyntax/DirBrute" target="_blank" rel="noopener">https://github.com/Xyntax/DirBrute</a></p><p>4，御剑</p><p>御剑是一款强大的后台扫描工具</p><p>5，Seay-svn源代码备份漏洞利用工具</p><p>以上五款都是经常使用的web信息泄露的收集工具。有时间我会补全每一款的使用方法。</p>]]></content>
+    <content type="html"><![CDATA[<p>1，bbscan一款轻量级的web信息泄露批量扫描工具。扫描迅速，使用简单。</p><p>特性：</p><ul><li>小字典</li><li>可以自动扫描 Target/Mask 这样网络中所有的主机</li><li>误报率小</li></ul><p>首先下载吧，下载地址如下：<a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">https://github.com/lijiejie/BBScan</a></p><p>使用方法：下载以后先解压，解压以后可以就直接在解压目录下使用命令（python需要已经安装，并且需要使用python2)：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure><p>安装完成以后就可以直接扫描web应用程序了。</p><p>使用方法如下：对ip和端口为10.242.227.11:88的主机进行扫描</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python BBScan.py --host http://10.242.227.11:88</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2018/10/20/5bcb23e14f11e.png" alt="3"></p><p>扫描结果如下：</p><p><img src="https://i.loli.net/2018/10/20/5bcb241a24f7a.png" alt="volcano18"></p><p>具体的使用方法也可以参考链接：</p><p><a href="https://github.com/lijiejie/BBScan" target="_blank" rel="noopener">https://github.com/lijiejie/BBScan</a></p><p><a href="https://www.secpulse.com/archives/40553.html" target="_blank" rel="noopener">https://www.secpulse.com/archives/40553.html</a></p><p><a href="http://www.legendsec.org/1067.html" target="_blank" rel="noopener">http://www.legendsec.org/1067.html</a></p><p>[注]：分享一波本人在这里遇到的坑吧，因为我当前使用的是python3，然后bbscan需要使用python2进行运行，于是我便将python27也添加到了环境变量，为了让系统能够区分python2和python3我将python安装目录下的python.exe该成了python2.exe，所以以后在我控制台直接输入python运行的是python的3的版本，而需要使用python的2.7的版本时，需要输入python2，好了，python2的环境变量既然配置好了，那么接下来我就要安装bbscan所需要的一些库文件了，于是我输入命令</p><p>pip2 install -r requirements.txt（因为我安装的python2.7，在python2.7的scripts目录下面也有pip2.exe，所以我需要使用pip2 install -r requirements.txt,因为如果我输入pip install -r requirements.txt则默认调用的是python3中的pip。）</p><p>但是报错了，报错如下：</p><p>Fatal error in launcher: Unable to create process using ‘“‘</p><p>解决方法：运行命令python2 -m pip install –upgrade pip升级pip的版本，因为重装以后会根据更改后的python的执行文件来创建关联，问题这样就被解决了，如果还不行，那就重装pip吧，使用命令如下：</p><p>python2  -m pip install –upgrade –force-reinstall pip</p><p>第一步bbscan所需要的库安装完成之后就可以直接使用了。</p><p>再次注明：pip2.7 install -r requirements.txt需要在bbscan的安装目录下运行。</p><p><img src="https://i.loli.net/2018/10/20/5bcb28a115f3e.png" alt="3"></p><p>2，git信息泄露工具：githack</p><p>下载地址：<a href="https://github.com/lijiejie/GitHack" target="_blank" rel="noopener">https://github.com/lijiejie/GitHack</a>    </p><p>python2 githack.py </p><p>3，dirbrute</p><p>下载地址：<a href="https://github.com/Xyntax/DirBrute" target="_blank" rel="noopener">https://github.com/Xyntax/DirBrute</a></p><p>4，御剑</p><p>御剑是一款强大的后台扫描工具</p><p>5，Seay-svn源代码备份漏洞利用工具</p><p>以上五款都是经常使用的web信息泄露的收集工具。有时间我会补全每一款的使用方法。</p>]]></content>
     
     <summary type="html">
     
