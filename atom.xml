@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-03T16:04:56.142Z</updated>
+  <updated>2018-11-04T07:15:59.911Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nmap使用方法</title>
+    <link href="http://yoursite.com/2018/11/04/nmap%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/11/04/nmap使用方法/</id>
+    <published>2018-11-04T07:16:34.584Z</published>
+    <updated>2018-11-04T07:15:59.911Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn 192.168.174.135   常用的扫描命令</span><br><span class="line">nmap -sS -Pn -p1-65535 192.168.174.135</span><br><span class="line">nmap -sS -Pn -p1-65535 -A 192.168.174.135</span><br><span class="line">nmap -sS -Pn -p1-65535 192.168.174.0/24</span><br><span class="line">nmap -sS -Pn -p1-65535 192.168.0.0/16</span><br><span class="line">nmap -sS -Pn -p1-65535 192.0.0.0/8</span><br></pre></td></tr></table></figure><p>-sS是使nmap进行一次隐秘的tcp扫描，已确定某个特定的tcp端口是否开放。</p><p>-Pn是告诉nmap不要使用ping命令预先判断主机是否存活，而是默认所有主机都是存活状态，这个选项适用于Internet上的渗透测试环境，因为internet上大多数网络都不允许ping所使用的”Internet控制报文协议（ICMP）”通行。如果预先使用ping命令进行判断，那么你可能会遗漏掉许多时间存活的主机。而如果在内网的环境中运行nmap则可以忽略掉这个选项，以加快运行速度。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn -A 192.168.174.135 输出更加详细的信息，如操作系统版本，ftp是否运行匿名登录等</span><br></pre></td></tr></table></figure><p>nmap 默认扫描目标1-10000范围内的端口号。我们则可以通过参数-p 来设置我们将要扫描的端口号</p><p>扫描目标主机1-65535号端口：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn -p1-65535 192.168.174.135</span><br></pre></td></tr></table></figure><p>使用-p1-65535对全部的端口进行扫描</p><p>也可以使用命令对指定端口21,22,23,25,80,443,8080进行扫描：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sS -Pn -p21,22,23,25,80,443,8080 192.168.174.135</span><br></pre></td></tr></table></figure><p>zenmap图形化常规扫描所使用的命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -T4 -A -v 192.168.174.135</span><br></pre></td></tr></table></figure><p>可以利用类似window/linux 系统下的ping方式进行扫描，例如使用ping扫描192.168.174.0/24这个网段的主机，判断其是否存活</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.174.0/24</span><br></pre></td></tr></table></figure><p>也可以使用-指定扫描主机的范围：如下扫描方法与下面的等价。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP 192.168.174.0-255</span><br></pre></td></tr></table></figure><p>也可以在判断主机是否存活的同时对端口进行扫描：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -p1-65535 -sS -T4 -Pn 192.168.174.0/24</span><br></pre></td></tr></table></figure><p> -T代表的是扫描的时候,一些控制选项(TCP的延迟时间,探测报文之间的间隔等)的集合</p><p>附上乌云上面的文章：</p><p><a href="https://wooyun.js.org/drops/NMAP%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B.html" target="_blank" rel="noopener">https://wooyun.js.org/drops/NMAP%20%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B.html</a></p><p><a href="https://wooyun.js.org/drops/Nmap%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C.html" target="_blank" rel="noopener">https://wooyun.js.org/drops/Nmap%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C.html</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class
+      
+    
+    </summary>
+    
+      <category term="nmap使用" scheme="http://yoursite.com/categories/nmap%E4%BD%BF%E7%94%A8/"/>
+    
+    
+      <category term="nmap" scheme="http://yoursite.com/tags/nmap/"/>
+    
+  </entry>
   
   <entry>
     <title>永恒之蓝的利用与提权</title>
