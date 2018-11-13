@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="web安全之dns欺骗," />
 
 
 
@@ -81,16 +81,27 @@
 
 
 
-<meta name="description" content="没有网络安全就没有国家安全">
-<meta property="og:type" content="website">
-<meta property="og:title" content="refreshing18">
-<meta property="og:url" content="http://yoursite.com/tags/工具/index.html">
+<meta name="description" content="攻击机：kali linux    ，ip地址：192.168.174.128 靶场机器：windows7，ip地址： 192.168.174.129 配置ettercap 使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。 原始的etter.dns  需要修改etter.dns为  配置/etc/ettercap/etter.conf文件，启用重定向命令。">
+<meta name="keywords" content="web安全之dns欺骗">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dns欺骗与ettercap">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/ettercap与dns欺骗/index.html">
 <meta property="og:site_name" content="refreshing18">
-<meta property="og:description" content="没有网络安全就没有国家安全">
+<meta property="og:description" content="攻击机：kali linux    ，ip地址：192.168.174.128 靶场机器：windows7，ip地址： 192.168.174.129 配置ettercap 使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。 原始的etter.dns  需要修改etter.dns为  配置/etc/ettercap/etter.conf文件，启用重定向命令。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea43164f82f.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea4c100e43b.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea4dd166519.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea4e05a6c29.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea4ff948cd3.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea5254bddf7.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea5336c7585.png">
+<meta property="og:image" content="https://i.loli.net/2018/11/13/5bea58594d342.png">
+<meta property="og:updated_time" content="2018-11-13T04:56:57.717Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="refreshing18">
-<meta name="twitter:description" content="没有网络安全就没有国家安全">
+<meta name="twitter:title" content="dns欺骗与ettercap">
+<meta name="twitter:description" content="攻击机：kali linux    ，ip地址：192.168.174.128 靶场机器：windows7，ip地址： 192.168.174.129 配置ettercap 使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。 原始的etter.dns  需要修改etter.dns为  配置/etc/ettercap/etter.conf文件，启用重定向命令。">
+<meta name="twitter:image" content="https://i.loli.net/2018/11/13/5bea43164f82f.png">
 
 
 
@@ -120,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/工具/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/ettercap与dns欺骗/"/>
 
 
 
 
 
-  <title>标签: 工具 | refreshing18</title>
+  <title>dns欺骗与ettercap | refreshing18</title>
   
 
 
@@ -144,7 +155,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 	<a href="https://github.com/volcano18" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -259,54 +270,278 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>工具<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/ettercap与dns欺骗/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="volcano18">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2018/10/13/5bc17ca8d1eb7.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="refreshing18">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/10/20/web五大信息泄露收集工具/" itemprop="url">
-              
-                <span itemprop="name">web信息泄露工具</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">dns欺骗与ettercap</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-20T21:20:19+08:00"
-              content="2018-10-20" >
-          10-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-13T11:07:52+08:00">
+                2018-11-13
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web安全之dns欺骗/" itemprop="url" rel="index">
+                    <span itemprop="name">web安全之dns欺骗</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/11/13/ettercap与dns欺骗/" class="leancloud_visitors" data-flag-title="dns欺骗与ettercap">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  293
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>攻击机：kali linux    ，ip地址：192.168.174.128</p>
+<p>靶场机器：windows7，ip地址： 192.168.174.129</p>
+<p>配置ettercap</p>
+<p>使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。</p>
+<p>原始的etter.dns</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea43164f82f.png" alt="360截图16241223756881"></p>
+<p>需要修改etter.dns为</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea4c100e43b.png" alt="1"></p>
+<p>配置/etc/ettercap/etter.conf文件，启用重定向命令。</p>
+<p>原始的etter.conf</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea4dd166519.png" alt="2"></p>
+<p>修改后的etter.conf</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea4e05a6c29.png" alt="3"></p>
+<p>使用Ettercap投毒</p>
+<p>在命令行输入：ettercap -G  启动图形化界面的Ettercap软件</p>
+<p>开启嗅探模式，点击Sniff-&gt;Unified sniffing</p>
+<p>主机探测：hosts-&gt;scan for hosts</p>
+<p>查看扫描结果：hosts-&gt;hosts list</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea4ff948cd3.png" alt="4"></p>
+<p>添加插件，Plugins-&gt;Load a plugin 中添加dns_spoof。双击进行添加。</p>
+<p>添加目标，将网关地址添加到Target1中，将windows操作系统的ip地址添加到target2中。</p>
+<p>添加目标，将网关地址选中，add to target1，将windows7选中，add to target2。</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea5254bddf7.png" alt="5"></p>
+<p>启动ARP欺骗：</p>
+<p>Mitm-&gt;arp poisoning</p>
+<p>全部选中：确定。</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea5336c7585.png" alt="1"></p>
+<p>最后start -&gt;sniffing启动dns欺骗。</p>
+<p>ok，dns欺骗成功。</p>
+<p><img src="https://i.loli.net/2018/11/13/5bea58594d342.png" alt="1542084682214"></p>
+<p>如果在局域网中跟大家玩dns欺骗，特别是考试的时候，我觉得应该是很有趣的一件事情吧，下次试试看。哈哈哈哈哈哈哈哈哈哈哈，希望不要被抓。</p>
 
       
     </div>
+    
+    
+    
 
+    
+	<div>
+	  
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  
+	</div>
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>你的每一次肯定都是我不断进步和分享的动力</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2018/10/13/5bc1af59aeeb0.png" alt="volcano18 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2018/10/13/5bc1ada43fc3e.png" alt="volcano18 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web安全之dns欺骗/" rel="tag"><i class="fa fa-tag"></i> web安全之dns欺骗</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/11/1TB的社工库/" rel="next" title="1TB的社工库">
+                <i class="fa fa-chevron-left"></i> 1TB的社工库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -314,6 +549,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -572,6 +811,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

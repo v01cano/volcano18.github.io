@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-11T02:32:39.174Z</updated>
+  <updated>2018-11-13T04:56:57.717Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dns欺骗与ettercap</title>
+    <link href="http://yoursite.com/2018/11/13/ettercap%E4%B8%8Edns%E6%AC%BA%E9%AA%97/"/>
+    <id>http://yoursite.com/2018/11/13/ettercap与dns欺骗/</id>
+    <published>2018-11-13T03:07:52.729Z</published>
+    <updated>2018-11-13T04:56:57.717Z</updated>
+    
+    <content type="html"><![CDATA[<p>攻击机：kali linux    ，ip地址：192.168.174.128</p><p>靶场机器：windows7，ip地址： 192.168.174.129</p><p>配置ettercap</p><p>使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。</p><p>原始的etter.dns</p><p><img src="https://i.loli.net/2018/11/13/5bea43164f82f.png" alt="360截图16241223756881"></p><p>需要修改etter.dns为</p><p><img src="https://i.loli.net/2018/11/13/5bea4c100e43b.png" alt="1"></p><p>配置/etc/ettercap/etter.conf文件，启用重定向命令。</p><p>原始的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4dd166519.png" alt="2"></p><p>修改后的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4e05a6c29.png" alt="3"></p><p>使用Ettercap投毒</p><p>在命令行输入：ettercap -G  启动图形化界面的Ettercap软件</p><p>开启嗅探模式，点击Sniff-&gt;Unified sniffing</p><p>主机探测：hosts-&gt;scan for hosts</p><p>查看扫描结果：hosts-&gt;hosts list</p><p><img src="https://i.loli.net/2018/11/13/5bea4ff948cd3.png" alt="4"></p><p>添加插件，Plugins-&gt;Load a plugin 中添加dns_spoof。双击进行添加。</p><p>添加目标，将网关地址添加到Target1中，将windows操作系统的ip地址添加到target2中。</p><p>添加目标，将网关地址选中，add to target1，将windows7选中，add to target2。</p><p><img src="https://i.loli.net/2018/11/13/5bea5254bddf7.png" alt="5"></p><p>启动ARP欺骗：</p><p>Mitm-&gt;arp poisoning</p><p>全部选中：确定。</p><p><img src="https://i.loli.net/2018/11/13/5bea5336c7585.png" alt="1"></p><p>最后start -&gt;sniffing启动dns欺骗。</p><p>ok，dns欺骗成功。</p><p><img src="https://i.loli.net/2018/11/13/5bea58594d342.png" alt="1542084682214"></p><p>如果在局域网中跟大家玩dns欺骗，特别是考试的时候，我觉得应该是很有趣的一件事情吧，下次试试看。哈哈哈哈哈哈哈哈哈哈哈，希望不要被抓。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;攻击机：kali linux    ，ip地址：192.168.174.128&lt;/p&gt;
+&lt;p&gt;靶场机器：windows7，ip地址： 192.168.174.129&lt;/p&gt;
+&lt;p&gt;配置ettercap&lt;/p&gt;
+&lt;p&gt;使用工具ettercap，配置/etc/ettercap/
+      
+    
+    </summary>
+    
+      <category term="web安全之dns欺骗" scheme="http://yoursite.com/categories/web%E5%AE%89%E5%85%A8%E4%B9%8Bdns%E6%AC%BA%E9%AA%97/"/>
+    
+    
+      <category term="web安全之dns欺骗" scheme="http://yoursite.com/tags/web%E5%AE%89%E5%85%A8%E4%B9%8Bdns%E6%AC%BA%E9%AA%97/"/>
+    
+  </entry>
   
   <entry>
     <title>1TB的社工库</title>
