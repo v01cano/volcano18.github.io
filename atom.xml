@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-11-13T04:56:57.717Z</updated>
+  <updated>2018-11-13T06:29:18.531Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,18 +21,15 @@
     <link href="http://yoursite.com/2018/11/13/ettercap%E4%B8%8Edns%E6%AC%BA%E9%AA%97/"/>
     <id>http://yoursite.com/2018/11/13/ettercap与dns欺骗/</id>
     <published>2018-11-13T03:07:52.729Z</published>
-    <updated>2018-11-13T04:56:57.717Z</updated>
+    <updated>2018-11-13T06:29:18.531Z</updated>
     
-    <content type="html"><![CDATA[<p>攻击机：kali linux    ，ip地址：192.168.174.128</p><p>靶场机器：windows7，ip地址： 192.168.174.129</p><p>配置ettercap</p><p>使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。</p><p>原始的etter.dns</p><p><img src="https://i.loli.net/2018/11/13/5bea43164f82f.png" alt="360截图16241223756881"></p><p>需要修改etter.dns为</p><p><img src="https://i.loli.net/2018/11/13/5bea4c100e43b.png" alt="1"></p><p>配置/etc/ettercap/etter.conf文件，启用重定向命令。</p><p>原始的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4dd166519.png" alt="2"></p><p>修改后的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4e05a6c29.png" alt="3"></p><p>使用Ettercap投毒</p><p>在命令行输入：ettercap -G  启动图形化界面的Ettercap软件</p><p>开启嗅探模式，点击Sniff-&gt;Unified sniffing</p><p>主机探测：hosts-&gt;scan for hosts</p><p>查看扫描结果：hosts-&gt;hosts list</p><p><img src="https://i.loli.net/2018/11/13/5bea4ff948cd3.png" alt="4"></p><p>添加插件，Plugins-&gt;Load a plugin 中添加dns_spoof。双击进行添加。</p><p>添加目标，将网关地址添加到Target1中，将windows操作系统的ip地址添加到target2中。</p><p>添加目标，将网关地址选中，add to target1，将windows7选中，add to target2。</p><p><img src="https://i.loli.net/2018/11/13/5bea5254bddf7.png" alt="5"></p><p>启动ARP欺骗：</p><p>Mitm-&gt;arp poisoning</p><p>全部选中：确定。</p><p><img src="https://i.loli.net/2018/11/13/5bea5336c7585.png" alt="1"></p><p>最后start -&gt;sniffing启动dns欺骗。</p><p>ok，dns欺骗成功。</p><p><img src="https://i.loli.net/2018/11/13/5bea58594d342.png" alt="1542084682214"></p><p>如果在局域网中跟大家玩dns欺骗，特别是考试的时候，我觉得应该是很有趣的一件事情吧，下次试试看。哈哈哈哈哈哈哈哈哈哈哈，希望不要被抓。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="ettercap在局域网中的应用"><a href="#ettercap在局域网中的应用" class="headerlink" title="ettercap在局域网中的应用"></a>ettercap在局域网中的应用</h1><h2 id="dns欺骗"><a href="#dns欺骗" class="headerlink" title="dns欺骗"></a>dns欺骗</h2><p>攻击机：kali linux    ，ip地址：192.168.174.128</p><p>靶场机器：windows7，ip地址： 192.168.174.129</p><p>配置ettercap</p><p>使用工具ettercap，配置/etc/ettercap/etter.dns文件中投毒点。</p><p>原始的etter.dns</p><p><img src="https://i.loli.net/2018/11/13/5bea43164f82f.png" alt="360截图16241223756881"></p><p>需要修改etter.dns为</p><p><img src="https://i.loli.net/2018/11/13/5bea4c100e43b.png" alt="1"></p><p>配置/etc/ettercap/etter.conf文件，启用重定向命令。</p><p>原始的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4dd166519.png" alt="2"></p><p>修改后的etter.conf</p><p><img src="https://i.loli.net/2018/11/13/5bea4e05a6c29.png" alt="3"></p><p>使用Ettercap投毒</p><p>在命令行输入：ettercap -G  启动图形化界面的Ettercap软件</p><p>开启嗅探模式，点击Sniff-&gt;Unified sniffing</p><p>主机探测：hosts-&gt;scan for hosts</p><p>查看扫描结果：hosts-&gt;hosts list</p><p><img src="https://i.loli.net/2018/11/13/5bea4ff948cd3.png" alt="4"></p><p>添加插件，Plugins-&gt;Load a plugin 中添加dns_spoof。双击进行添加。</p><p>添加目标，将网关地址添加到Target1中，将windows操作系统的ip地址添加到target2中。</p><p>添加目标，将网关地址选中，add to target1，将windows7选中，add to target2。</p><p><img src="https://i.loli.net/2018/11/13/5bea5254bddf7.png" alt="5"></p><p>启动ARP欺骗：</p><p>Mitm-&gt;arp poisoning</p><p>全部选中：确定。</p><p><img src="https://i.loli.net/2018/11/13/5bea5336c7585.png" alt="1"></p><p>最后start -&gt;sniffing启动dns欺骗。</p><p>ok，dns欺骗成功。</p><p><img src="https://i.loli.net/2018/11/13/5bea58594d342.png" alt="1542084682214"></p><p>如果在局域网中跟大家玩dns欺骗，特别是考试的时候，我觉得应该是很有趣的一件事情吧，下次试试看。哈哈哈哈哈哈哈哈哈哈哈，希望不要被抓。</p><h2 id="中间人密码截获"><a href="#中间人密码截获" class="headerlink" title="中间人密码截获"></a>中间人密码截获</h2><p>与dns欺骗类似，在做完dns欺骗的验证后，重启kali</p><p>1,启用路由转发,命令： </p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;1&quot; &gt; /proc/sys/net/ipv4/ip_forward</span><br></pre></td></tr></table></figure><p>2,使用ettercap 进行中间人嗅探：</p><p>攻击机：kali linux    ，ip地址：192.168.174.128</p><p>靶场机器：windows7，ip地址： 192.168.174.129</p><p>2,1在命令行输入：ettercap -G  启动图形化界面的Ettercap软件</p><p>开启嗅探模式，点击Sniff-&gt;Unified sniffing</p><p>主机探测：hosts-&gt;scan for hosts</p><p>查看扫描结果：hosts-&gt;hosts list</p><p><img src="https://i.loli.net/2018/11/13/5bea4ff948cd3.png" alt="4"></p><p>添加目标，将网关地址添加到Target1中，将windows操作系统的ip地址添加到target2中。</p><p>添加目标，将网关地址选中，add to target1，将windows7选中，add to target2。</p><p><img src="https://i.loli.net/2018/11/13/5bea5254bddf7.png" alt="5"></p><p>启动ARP欺骗：</p><p>Mitm-&gt;arp poisoning</p><p>全部选中：确定。</p><p><img src="https://i.loli.net/2018/11/13/5bea5336c7585.png" alt="1"></p><p>最后start -&gt;sniffing启动嗅探。</p><p>嗅探成功，在windows7上输入用户名和密码，可以成功在kali上查看。</p><p><img src="https://i.loli.net/2018/11/13/5bea6f2c790b8.png" alt="1542090511973"></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;攻击机：kali linux    ，ip地址：192.168.174.128&lt;/p&gt;
-&lt;p&gt;靶场机器：windows7，ip地址： 192.168.174.129&lt;/p&gt;
-&lt;p&gt;配置ettercap&lt;/p&gt;
-&lt;p&gt;使用工具ettercap，配置/etc/ettercap/
+        &lt;h1 id=&quot;ettercap在局域网中的应用&quot;&gt;&lt;a href=&quot;#ettercap在局域网中的应用&quot; class=&quot;headerlink&quot; title=&quot;ettercap在局域网中的应用&quot;&gt;&lt;/a&gt;ettercap在局域网中的应用&lt;/h1&gt;&lt;h2 id=&quot;dns欺骗&quot;&gt;&lt;a
       
     
     </summary>
